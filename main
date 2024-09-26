@@ -1,0 +1,201 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+type CoWorker = {
+  id: number
+  name: string
+  jobTitle: string
+  bio: string
+  imageUrl: string
+}
+
+const coworkers: CoWorker[] = [
+  {
+    id: 1,
+    name: "Dinesh Purohit",
+    jobTitle: "Senior Developer",
+    bio: "Dinesh likes long walks on the beach and snuggling.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 2,
+    name: "Jose Vargas",
+    jobTitle: "Senior Developer",
+    bio: "Jose is a drinking machine and loves Yapping.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 3,
+    name: "Chris Larson",
+    jobTitle: "Senior Developer",
+    bio: "Chris spent the first 20 years in a monastery.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 4,
+    name: "Brit Thorn",
+    jobTitle: "Senior Developer",
+    bio: "Brit is a member of the toastmasters.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 5,
+    name: "Eva Martinez",
+    jobTitle: "Frontend Developer",
+    bio: "Eva specializes in creating responsive and accessible web interfaces.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 6,
+    name: "Frank Lee",
+    jobTitle: "Backend Developer",
+    bio: "Frank is passionate about building scalable and efficient server-side applications.",
+    imageUrl: "https://v0.dev/public.blob.vercel-storage.com/frank-lee-RhA7Z0gQOBx7mOdzaI2XVJOqWZsZvk.jpg",
+  },
+  {
+    id: 7,
+    name: "Grace Kim",
+    jobTitle: "DevOps Engineer",
+    bio: "Grace ensures smooth deployment and maintenance of our infrastructure.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 8,
+    name: "Henry Wilson",
+    jobTitle: "Quality Assurance",
+    bio: "Henry is committed to maintaining high standards of software quality.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 9,
+    name: "Irene Garcia",
+    jobTitle: "Product Owner",
+    bio: "Irene bridges the gap between technical teams and business stakeholders.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 10,
+    name: "Jack Thompson",
+    jobTitle: "Systems Architect",
+    bio: "Jack designs robust and scalable system architectures for our projects.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 11,
+    name: "Karen Davis",
+    jobTitle: "UI Designer",
+    bio: "Karen creates visually appealing and user-friendly interface designs.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 12,
+    name: "Liam Murphy",
+    jobTitle: "Mobile Developer",
+    bio: "Liam specializes in developing cross-platform mobile applications.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 13,
+    name: "Mia Robinson",
+    jobTitle: "Content Strategist",
+    bio: "Mia develops engaging content strategies to enhance user experience.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 14,
+    name: "Nathan Patel",
+    jobTitle: "Database Administrator",
+    bio: "Nathan ensures the performance, integrity, and security of our databases.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 15,
+    name: "Olivia Taylor",
+    jobTitle: "Scrum Master",
+    bio: "Olivia facilitates agile processes and helps teams achieve their sprint goals.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 16,
+    name: "Paul Anderson",
+    jobTitle: "Security Specialist",
+    bio: "Paul is dedicated to protecting our systems and data from cyber threats.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 17,
+    name: "Quinn Foster",
+    jobTitle: "Machine Learning Engineer",
+    bio: "Quinn develops AI models to enhance our products with intelligent features.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 18,
+    name: "Rachel Chen",
+    jobTitle: "Technical Writer",
+    bio: "Rachel creates clear and concise documentation for our software products.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 19,
+    name: "Samuel Wright",
+    jobTitle: "Cloud Architect",
+    bio: "Samuel designs and implements our cloud-based infrastructure solutions.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 20,
+    name: "Tina Nelson",
+    jobTitle: "Business Analyst",
+    bio: "Tina analyzes business needs and translates them into technical requirements.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 21,
+    name: "Ulysses King",
+    jobTitle: "Blockchain Developer",
+    bio: "Ulysses explores and implements blockchain solutions for our projects.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 22,
+    name: "Victoria Adams",
+    jobTitle: "User Researcher",
+    bio: "Victoria conducts user research to inform our product design decisions.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    id: 23,
+    name: "Walter Scott",
+    jobTitle: "Performance Engineer",
+    bio: "Walter optimizes our applications for maximum speed and efficiency.",
+    imageUrl: "/placeholder.svg?height=100&width=100",
+  },
+]
+
+export default function CoWorkerGallery() {
+  return (
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold mb-8 text-center">Our Team</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {coworkers.map((coworker) => (
+          <Card key={coworker.id} className="overflow-hidden transition-all hover:shadow-lg">
+            <CardHeader className="flex flex-row items-center gap-4 pb-2">
+              <Avatar className="h-16 w-16">
+                <AvatarImage alt={`${coworker.name}'s profile picture`} src={coworker.imageUrl} />
+                <AvatarFallback>{coworker.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+              </Avatar>
+              <div>
+                <CardTitle>{coworker.name}</CardTitle>
+                <p className="text-sm text-muted-foreground">{coworker.jobTitle}</p>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm">{coworker.bio}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  )
+}
